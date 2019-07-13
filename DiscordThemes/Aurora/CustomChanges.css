@@ -1,13 +1,7 @@
 /* Kill Me */
-.theme-light .layer-3QrUeG:first-of-type::before {
-}
-.app-2rEoOp.vertical-V37hAW.theme-light .container-2Thooq > .noWrap-3jynv6 > .button-2b6hmh {
-}
-.app-2rEoOp.vertical-V37hAW.theme-light .container-2Thooq > .noWrap-3jynv6 > .button-2b6hmh:before {
-}
-.theme-light .side-8zPYf6 .item-PXvHYJ:nth-of-type(19) {
-}
-.theme-light .layer-3QrUeG {
-}
-.theme-light .layer-3QrUeG:first-of-type * {
+
+/* messages and codeblocks */
+.spoilerText-3p6IlD.hidden-HHr2R9 .inlineContent-3ZjPuv {
+  opacity: 1;
+  filter: blur(2px);
 }
