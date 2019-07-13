@@ -103,3 +103,20 @@
 	--media-roundness:100px;
 	--guild-hovered-roundness:12px;
 }
+
+.theme-light .layer-3QrUeG:first-of-type::before {
+  content: "Sorry, but light mode isnt supported in Aurora yet. :( ~Tropical";
+  text-align:center;
+  width: 500px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background:rgba(0,0,0,0.75);
+  border:1px solid rgba(0,0,0,0.5);
+  box-shadow:0 0 12px black;
+  color:#fff;
+  padding: 20px;
+  padding-bottom:80px;
+  border-radius: 15px;
+}
