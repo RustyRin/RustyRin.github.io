@@ -11,3 +11,18 @@
 	box-shadow:none !important;
     font-color:#ff1414 !important;
 }
+
+.da-winButton:nth-of-type(4):hover:after {
+    content:'Minimize';
+    background:var(--main-color);
+    position:absolute;
+    top:40px;
+    color:#007af5;
+    padding:8px 12px;
+    border-radius:5px;
+    opacity:1;
+    animation: fadetop 150ms;
+    font-size:14px;
+    font-weight:500;
+    box-shadow:0px 0px 20px rgba(0, 0, 0, 0.5);
+}
