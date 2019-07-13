@@ -124,3 +124,9 @@
 [class*="avatar-"], .image-33JSyf {
 	box-shadow: 0.5px 0.5px 5px black !important;
 }
+
+.containerCozy-jafyvG {
+	background: rgba(0,0,0,0.4);
+	margin: 15px 15px 0 25px;
+	border-radius: 25px;
+}
