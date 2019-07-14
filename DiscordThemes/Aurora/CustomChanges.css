@@ -1,6 +1,6 @@
 /*1.d. Light Mode Blocker (Based on MasicoreLord's Light Theme blocker, taken with permission). */
-.theme-light .layer-3QrUeG:first-of-type::after {
-  content: "Sorry, but light mode isnt supported in Aurora yet. :( ~Tropical";
+.theme-light .layer-3QrUeG:first-of-type::before {
+  content: "pls no light theme block";
   text-align:center;
   width: 500px;
   position:absolute;
