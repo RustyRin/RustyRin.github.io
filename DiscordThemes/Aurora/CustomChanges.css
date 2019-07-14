@@ -1,6 +1,5 @@
 body::after {
   content: "";
-  background: url(https://i.redd.it/ljf70pg0z76y.jpg);
   opacity: 0.3;
   top: 0;
   left: 0;
