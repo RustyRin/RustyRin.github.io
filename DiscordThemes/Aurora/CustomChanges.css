@@ -1,14 +1,57 @@
 /*1.d. Light Mode Blocker (Based on MasicoreLord's Light Theme blocker, taken with permission). */
-.theme-light .layer-3QrUeG:first-of-type::before {
+.theme-light .layer-3QrUeG:first-of-type::after {
+  content: "Sorry, but light mode isnt supported in Aurora yet. :( ~Tropical";
+  text-align:center;
+  width: 500px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background:rgba(0,0,0,0.75);
+  border:1px solid rgba(0,0,0,0.5);
+  box-shadow:0 0 12px black;
+  color:#fff;
+  padding: 20px;
+  padding-bottom:80px;
+  border-radius: 15px;
 }
 .app-2rEoOp.vertical-V37hAW.theme-light .container-2Thooq > .noWrap-3jynv6 > .button-2b6hmh {
+  position: absolute;
+  left: 50%;
+  border-radius:3px;
+  top: 45%;
+  transform: translate(-50%, 120%);
+  width: 180px;
+  height: 40px;
+  visibility: visible !important;
+  background: var(--main-color) !important;
+  box-shadow:0 0 12px black;
+  opacity:1;
 }
 .app-2rEoOp.vertical-V37hAW.theme-light .container-2Thooq > .noWrap-3jynv6 > .button-2b6hmh:before {
+  position: absolute;
+  content: "Turn On Dark Mode";
+  padding:20px;
+  width:200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
 }
 .theme-light .side-8zPYf6 .item-PXvHYJ:nth-of-type(19) {
+    border:2px solid var(--hover-color);
+    color:var(--hover-color);
+    background:var(--main-color-faded);
+    padding:16px;
+    text-align:center;
 }
 .theme-light .layer-3QrUeG {
+  background:var(--backdropblurred) !important;
+  background-size:cover !important;
 }
 .theme-light .layer-3QrUeG:first-of-type * {
+  visibility:hidden;
 }
 /*============== END OF SECTION ============== */
