@@ -1,10 +1,14 @@
-body::after {
-  content: "";
-  opacity: 0.3;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+/*1.d. Light Mode Blocker (Based on MasicoreLord's Light Theme blocker, taken with permission). */
+.theme-light .layer-3QrUeG:first-of-type::before {
 }
+.app-2rEoOp.vertical-V37hAW.theme-light .container-2Thooq > .noWrap-3jynv6 > .button-2b6hmh {
+}
+.app-2rEoOp.vertical-V37hAW.theme-light .container-2Thooq > .noWrap-3jynv6 > .button-2b6hmh:before {
+}
+.theme-light .side-8zPYf6 .item-PXvHYJ:nth-of-type(19) {
+}
+.theme-light .layer-3QrUeG {
+}
+.theme-light .layer-3QrUeG:first-of-type * {
+}
+/*============== END OF SECTION ============== */
