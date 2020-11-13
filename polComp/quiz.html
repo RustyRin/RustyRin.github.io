@@ -40,6 +40,7 @@
     function populateQO(value) {
       questionsObject[value['id']] = value
     }
+    console.log('Populated questionsObject');
 
 
     // Populate & shuffle questionsOrder
@@ -49,6 +50,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get("shuffle") == "true") {
         shuffleArray(questionsOrder);
+        console.log('Shuffling questionsOrder');
     }
 
     function shuffleArray(array) {
@@ -63,10 +65,14 @@
     init_question();
 
     function init_question() {
+
+        // this takes information from the questionOrder object
+        // then displays the question text along with the current number
+
+        console.log("In init_question");
         $("#question-text").html(questionsObject[questionsOrder[qn]].question);
-        $("#question-number").html("Question "+(qn + 1)+" of "+(questionsOrder.length));
-
-
+        console.log('init_quesion 1) ' + questionsObject[questionsOrder[qn]].question);
+        $("#question-number").html("Question "+(qn + 1)+" of "+(questionsOrder.length));    // showing the number of current question
 
         if (jQuery.isEmptyObject(answers)) {
             $('#back_button').hide()
@@ -85,12 +91,13 @@
             return;
         }
 
+        console.log('Next question pressed. answer given ' + answer)
         answers[questionsOrder[qn]] = answer;
         qn++;
 
-        if (qn < questionsOrder.length) {
-            init_question();
-        } else {
+        if (qn < questionsOrder.length) {   // if there is still more to do
+            init_question();                // do init_question, still need to know how it works
+        } else {                            // are you done
             results();
         }
     }
@@ -99,6 +106,11 @@
     // Previous question
 
     function prev_question() {
+
+        /*
+            Goes back in the question array, delete the last given answer from answer array
+        */
+
         if (jQuery.isEmptyObject(answers)) {
             $('#back_button').hide()
             $('#back_button_off').show()
@@ -116,11 +128,18 @@
 
     function results() {
 
+        console.log("Calculating answers")
+
         window.sessionStorage.answers = JSON.stringify(answers);
+        console.log("Strinifying the answers...")
+        console.log(JSON.stringify(answers))
 
 
         // Calculate final results
+        console.log('Calculating the final results')
         pct = percentageCalculation();
+        console.log("Percent calculation: ")
+        console.log(JSON.stringify(pct))
         window.sessionStorage.percentages = JSON.stringify(pct);
 
         // prepare arguments
