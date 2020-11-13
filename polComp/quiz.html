@@ -162,6 +162,9 @@
     // Calculate percentage
 
     function percentageCalculation() {
+
+        console.log('In percent calculations')
+        
         // calc max
         var max = new Object(); // Max possible scores
         var score = new Object(); // User scores
@@ -176,19 +179,24 @@
         }
 
         // get max & scores
+        console.log('Getting max scores')
         for (const id in answers) {
             // dismiss "don't know"
             if (answers[id] !== null) {
                 for (const effectName in questionsObject[id].effects) {
+                    console.log("effect name: " + effectName)
                     max[effectName] += Math.abs(questionsObject[id].effects[effectName]);
+                    console.log('max of ' + effectName + ': ' + max[effectName])
                     score[effectName] += answers[id]*questionsObject[id].effects[effectName];
+                    console.log('score of ' + effectName + ': ' + score[effectName])
                 }
             }
         }
 
         // calc score
-
+        console.log('caculating score')
         for (const i in Object.keys(max)) {
+            print('Object.keys(max)[i] = ' + Object.keys(max)[i])
             effectName = Object.keys(max)[i]
 
             if (max[effectName] > 0) {
