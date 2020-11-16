@@ -36,6 +36,7 @@
 
     var questionsObject = new Object();     // Question objects with ID keys
     questions.forEach(populateQO);
+    console.log(questions)
 
     function populateQO(value) {
       questionsObject[value['id']] = value
@@ -87,6 +88,9 @@
     // Next question
 
     function next_question(answer) {
+
+        // answer is the button pressed
+
         if (qn === questionsOrder.length) {
             return;
         }
@@ -172,9 +176,14 @@
 
         // prepare
         for (const id in answers) {
-            for (const effectName in questionsObject[id].effects) {
-                max[effectName] = 0
-                score[effectName] = 0
+            for (const agreementLevel in questionsObject[id].effects) {
+
+                for (var i = 0; i < Object.keys(questionsObject[id].effects[agreementLevel]).length; i++){
+                    effectName = Object.keys(questionsObject[id].effects[agreementLevel])[i]
+
+                    max[effectName] = 0
+                    score[effectName] = 0
+                }
             }
         }
 
@@ -183,13 +192,42 @@
         for (const id in answers) {
             // dismiss "don't know"
             if (answers[id] !== null) {
-                for (const effectName in questionsObject[id].effects) {
-                    console.log("effect name: " + effectName)
+
+                // testing
+
+                for (const agreementLevel in questionsObject[id].effects) {
+
+                    for (var i = 0; i < Object.keys(questionsObject[id].effects[agreementLevel]).length; i++){
+
+                        effectName = Object.keys(questionsObject[id].effects[agreementLevel])[i]
+
+                        console.log(effectName + ' score at ' + agreementLevel + ': ' + questionsObject[id].effects[agreementLevel][effectName])
+
+                        max[effectName] += Math.abs(questionsObject[id].effects[agreementLevel][effectName]);
+                        console.log('max of ' + effectName + ': ' + max[effectName])
+
+                        score[effectName] += answers[id]*questionsObject[id].effects[agreementLevel][effectName];
+                        console.log('score of ' + effectName + ': ' + score[effectName])
+                    }
+                }
+
+                
+                /*for (const effectName in [Object.keys(questionsObject[id].effects[effectName])]) {
+
+                    console.log("KEYS\n"+ Object.keys(questionsObject[id].effects[effectName]))
+
+                    console.log("Economic Score for " + effectName + ': ' + questionsObject[id].effects[effectName]["economic"])
+                    console.log("Power Score for " + effectName + ': ' + questionsObject[id].effects[effectName]["power"])
+                    console.log("Social Score for " + effectName + ': ' + questionsObject[id].effects[effectName]["social"])
                     max[effectName] += Math.abs(questionsObject[id].effects[effectName]);
+
+
                     console.log('max of ' + effectName + ': ' + max[effectName])
                     score[effectName] += answers[id]*questionsObject[id].effects[effectName];
                     console.log('score of ' + effectName + ': ' + score[effectName])
                 }
+                */
+                
             }
         }
 
