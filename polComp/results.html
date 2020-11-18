@@ -20,9 +20,12 @@
     
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        x_axis  = parseFloat(urlParams.get("right"))
-        y_axis  = parseFloat(urlParams.get("auth"))
-        z_axis  = parseFloat(urlParams.get("prog"))
+        x_axis  = parseFloat(urlParams.get("economic"))
+        console.log('results x axis = ' + x_axis)
+        y_axis  = parseFloat(urlParams.get("power"))
+        console.log('results y axis = ' + y_axis)
+        z_axis  = parseFloat(urlParams.get("social"))
+        console.log('results z axis = ' + z_axis)
     
         window.onload = function() {
             var background = new Image();

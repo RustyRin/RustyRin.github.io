@@ -18,11 +18,11 @@
 <hr>
 <h2 style="text-align:center;" id="question-number">Loading...</h2>
 <p class="question" id="question-text"></p>
-<button class="button" onclick="next_question(1.0)" style="background-color: #1b5e20;">Strongly Agree</button> <br>
-<button class="button" onclick="next_question(0.5)" style="background-color: #4caf50;">Agree</button> <br>
-<button class="button" onclick="next_question(0)" style="background-color: #bbbbbb;">Neutral/Unsure</button> <br>
-<button class="button" onclick="next_question(-0.5)" style="background-color: #f44336;">Disagree</button> <br>
-<button class="button" onclick="next_question(-1.0)" style="background-color: #b71c1c;">Strongly Disagree</button> <br>
+<button class="button" onclick="next_question('strongly_agree')" style="background-color: #1b5e20;">Strongly Agree</button> <br>
+<button class="button" onclick="next_question('agree')" style="background-color: #4caf50;">Agree</button> <br>
+<button class="button" onclick="next_question('neutral')" style="background-color: #bbbbbb;">Neutral/Unsure</button> <br>
+<button class="button" onclick="next_question('disagree')" style="background-color: #f44336;">Disagree</button> <br>
+<button class="button" onclick="next_question('strongly_disagree')" style="background-color: #b71c1c;">Strongly Disagree</button> <br>
 <button class="small_button" onclick="prev_question()" id="back_button">Back</button>
 <button class="small_button_off" id="back_button_off">Back</button><br>
 
@@ -194,8 +194,9 @@
             if (answers[id] !== null) {
 
                 // testing
-
+                console.log('In angreementLevel loop')
                 for (const agreementLevel in questionsObject[id].effects) {
+                    console.log('agreementLevel = ' + agreementLevel)
 
                     for (var i = 0; i < Object.keys(questionsObject[id].effects[agreementLevel]).length; i++){
 
@@ -206,7 +207,11 @@
                         max[effectName] += Math.abs(questionsObject[id].effects[agreementLevel][effectName]);
                         console.log('max of ' + effectName + ': ' + max[effectName])
 
-                        score[effectName] += answers[id]*questionsObject[id].effects[agreementLevel][effectName];
+                        console.log('answers[id] = ' + answers[id])
+                        console.log('answers[id]*questionsObject[id].effects[agreementLevel][effectName] = ' + questionsObject[id].effects[answers[id]][effectName])
+                        //console.log('questionObject[id].effects[egreementLevel][effectName] = ' + questionsObject[id].effects[agreementLevel][effectName]) // the value of the effect at a certain agreement level
+                        //score[effectName] += answers[id]*questionsObject[id].effects[agreementLevel][effectName];     // old way; doesnt work
+                        score[effectName] += questionsObject[id].effects[answers[id]][effectName];
                         console.log('score of ' + effectName + ': ' + score[effectName])
                     }
                 }
@@ -233,17 +238,29 @@
 
         // calc score
         console.log('caculating score')
+        console.log('Object.keys(max) = ' + Object.keys(max))
+        console.log('max = ')
+        console.log(max)
         for (const i in Object.keys(max)) {
-            print('Object.keys(max)[i] = ' + Object.keys(max)[i])
+            console.log('i = ' + i)
+
+            console.log('Object.keys(max)[i] = ' + Object.keys(max)[i])
             effectName = Object.keys(max)[i]
+            console.log('thingy ' + max[effectName])
+            console.log('score = ')
+            console.log(score)
+            console.log('effectname = ' + effectName)
 
             if (max[effectName] > 0) {
+                console.log('max[effectName] = ' + max[effectName])
+                console.log('score[effectName] = ' + score[effectName])
                 pct[effectName] = (Math.round((score[effectName]*10/max[effectName]) * 100) / 100).toFixed(2);
             } else {
                 pct[effectName] = 0
             }
         }
-
+        console.log('pct: ')
+        console.log(pct)
         return pct;
     }
 </script>
